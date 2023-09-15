@@ -1,4 +1,3 @@
-using System.Text.Json;
 using FunctionNET8App.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,10 +16,12 @@ public class StartDemo
     }
 
     [Function("StartDemo")]
-    public async Task<DispatchedCachedItem> RunAsync(
-        [HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequest req)
+    public DispatchedCachedItem RunAsync(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequest req,
+        FunctionContext context,
+        [FromBody] IEnumerable<TodoItem> items)
     {
-        var items = await JsonSerializer.DeserializeAsync<IEnumerable<TodoItem>>(req.Body);
+        //var body = System.Text.Json.JsonSerializer.Deserialize<IEnumerable<TodoItem>>(context.GetHttpContext().Request.Body);
 
         return new DispatchedCachedItem
         {
