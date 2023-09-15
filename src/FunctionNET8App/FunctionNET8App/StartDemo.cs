@@ -1,3 +1,5 @@
+using System.Text.Json;
+using FunctionNET8App.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
@@ -15,10 +17,23 @@ public class StartDemo
     }
 
     [Function("StartDemo")]
-    public IActionResult Run([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequest req)
+    public async Task<DispatchedCachedItem> RunAsync(
+        [HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequest req)
     {
-        _logger.LogInformation("C# HTTP trigger function processed a request.");
+        var items = await JsonSerializer.DeserializeAsync<IEnumerable<TodoItem>>(req.Body);
 
-        return new OkResult();
+        return new DispatchedCachedItem
+        {
+            HttpResponse = new OkResult(),
+            Items = items!
+        };
     }
+}
+
+
+public class DispatchedCachedItem
+{
+    [RabbitMQOutput(QueueName = "Todo", ConnectionStringSetting = "RabbitConnection")]
+    public IEnumerable<TodoItem> Items { get; set; } = Enumerable.Empty<TodoItem>();
+    public IActionResult HttpResponse { get; set; } = new OkResult();
 }

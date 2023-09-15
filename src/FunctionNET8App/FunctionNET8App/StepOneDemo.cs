@@ -16,10 +16,10 @@ public class StepOneDemo
 
     [Function("Function1")]
     public void Run(
-        [RabbitMQTrigger("myqueue", ConnectionStringSetting = "Redis")] string myQueueItem,
-        [SqlInput(commandText: "select [Id], [order], [title], [url], [completed] from dbo.ToDo where Id = @Id",
+        [RabbitMQTrigger("Todo", ConnectionStringSetting = "RabbitConnection")] string myQueueItem,
+        [SqlInput(commandText: "select [Id], [DueDate], [ToDo], [Note] from dbo.ToDo where Id = @Id",
             commandType: System.Data.CommandType.Text,
-            parameters: "@Id={Query.id}",
+            parameters: "@Id={Query.Id}",
             connectionStringSetting: "SqlConnectionString")]
         IEnumerable<TodoItem> toDoItem)
     {
