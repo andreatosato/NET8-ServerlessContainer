@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
+using FromBodyAttribute = Microsoft.Azure.Functions.Worker.Http.FromBodyAttribute;
 
 namespace FunctionNET8App;
 
@@ -15,14 +16,12 @@ public class StartDemo
         _logger = loggerFactory.CreateLogger<StartDemo>();
     }
 
-    [Function("StartDemo")]
+    [Function("StartDemoCache")]
     public DispatchedCachedItem RunAsync(
         [HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequest req,
         FunctionContext context,
         [FromBody] IEnumerable<TodoItem> items)
     {
-        //var body = System.Text.Json.JsonSerializer.Deserialize<IEnumerable<TodoItem>>(context.GetHttpContext().Request.Body);
-
         return new DispatchedCachedItem
         {
             HttpResponse = new OkResult(),

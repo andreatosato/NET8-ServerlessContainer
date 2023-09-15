@@ -14,15 +14,15 @@ public class StepOneDemo
         _logger = loggerFactory.CreateLogger<StepOneDemo>();
     }
 
-    [Function("Function1")]
+    [Function("StepOneDemo")]
     public void Run(
-        [RabbitMQTrigger("Todo", ConnectionStringSetting = "RabbitConnection")] string myQueueItem,
+        [RabbitMQTrigger("Todo", ConnectionStringSetting = "RabbitConnection")] TodoItem messageItem,
         [SqlInput(commandText: "select [Id], [DueDate], [ToDo], [Note] from dbo.ToDo where Id = @Id",
             commandType: System.Data.CommandType.Text,
-            parameters: "@Id={Query.Id}",
+            parameters: "@Id={messageItem.Id}",
             connectionStringSetting: "SqlConnectionString")]
         IEnumerable<TodoItem> toDoItem)
     {
-        _logger.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
+        _logger.LogInformation($"C# Queue trigger function processed: {messageItem.Id}");
     }
 }
