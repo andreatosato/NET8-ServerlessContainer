@@ -1,0 +1,12 @@
+{
+    "IsEncrypted": false,
+    "Values": {
+        "APPLICATIONINSIGHTS_CONNECTION_STRING": "",
+        "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+        "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
+    },
+    "ConnectionStrings": {
+        "RabbitConnection": "amqp://guest:guest@localhost:5672/",
+        "SqlConnectionString": "Server=(localdb)\\MSSQLLocalDB;Integrated Security=true;Initial Catalog=FunctionsDB"
+    }
+}
