@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "ContainerAppServerless": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7007"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "httpPort": 31436,
+      "useSSL": false
+    }
+  }
+}
