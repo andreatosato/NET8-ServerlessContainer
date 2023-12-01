@@ -5,7 +5,13 @@ VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunctionNET8App", "FunctionNET8App\FunctionNET8App.csproj", "{6573D2D4-CADB-4C51-9CBF-BFB4C1036F93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContainerAppServerless", "ContainerAppServerless\ContainerAppServerless.csproj", "{9E671C66-9E32-4EEA-A3A5-B734022808B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContainerAppServerless", "ContainerAppServerless\ContainerAppServerless.csproj", "{9E671C66-9E32-4EEA-A3A5-B734022808B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Performance", "Performance", "{06C19447-B690-442A-AB29-41A7595FDA63}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpDownload.HttpData", "Performance\HttpDownload.HttpData\HttpDownload.HttpData.csproj", "{BCE4C706-599F-436C-A42C-65CF2ADB4CBE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpDownload", "Performance\HttpDownload\HttpDownload.csproj", "{94E99DF6-02E3-4962-81E0-13AA657CE176}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +27,21 @@ Global
 		{9E671C66-9E32-4EEA-A3A5-B734022808B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E671C66-9E32-4EEA-A3A5-B734022808B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E671C66-9E32-4EEA-A3A5-B734022808B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCE4C706-599F-436C-A42C-65CF2ADB4CBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCE4C706-599F-436C-A42C-65CF2ADB4CBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCE4C706-599F-436C-A42C-65CF2ADB4CBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCE4C706-599F-436C-A42C-65CF2ADB4CBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94E99DF6-02E3-4962-81E0-13AA657CE176}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94E99DF6-02E3-4962-81E0-13AA657CE176}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94E99DF6-02E3-4962-81E0-13AA657CE176}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94E99DF6-02E3-4962-81E0-13AA657CE176}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BCE4C706-599F-436C-A42C-65CF2ADB4CBE} = {06C19447-B690-442A-AB29-41A7595FDA63}
+		{94E99DF6-02E3-4962-81E0-13AA657CE176} = {06C19447-B690-442A-AB29-41A7595FDA63}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {29728DB0-6685-44B2-9833-3945CDFABC66}
